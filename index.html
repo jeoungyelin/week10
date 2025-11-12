@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>미소녀 스타일 메이커</title>
+  <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: url('main back.png') no-repeat center/cover;
+      font-family: 'Single Day', cursive;
+      position: relative;
+    }
+
+    /* 타이틀 이미지 */
+    #title {
+      position: absolute;
+      top: 15%;
+      left: 28%;
+      transform: translateX(-50%);
+      width: 700px;
+    }
+
+    /* 캐릭터 */
+    #character {
+      position: absolute;
+      bottom: 0%;
+      right: 0%;
+      width: 850px;
+      transform: translateX(0%,-50%);
+      transition: opacity 0.2s ease;
+    }
+    #character:hover {
+      content: url('girl wink.png'); /* 마우스 올렸을 때 다른 이미지로 변경 */
+    }
+
+    /* 게임 시작 버튼 */
+    #startBtn {
+      position: absolute;
+      bottom: 30%;
+      left: 20%;
+      width: 250px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    #startBtn:hover {
+      content: url('Group 2085666353.png'); /* 마우스 올렸을 때 다른 이미지로 변경 */
+      transform: scale(1.1);
+    }
+
+    /* BGM 버튼 */
+    #bgmBtn {
+      position: absolute;
+      bottom: 19%;
+      left: 20%;
+      width: 250px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    #bgmBtn:hover {
+      transform: scale(1.1);
+    }
+
+  </style>
+</head>
+<body>
+  <img id="title" src="head title.png" alt="타이틀">
+  <img id="character" src="girl main.png" alt="캐릭터">
+  <img id="startBtn" src="Group 2085666352.png" alt="게임하기">
+  <img id="bgmBtn" src="Group 2085666376.png" alt="BGM 버튼">
+  
+  <audio id="bgm" src="bgm.mp3" loop></audio>
+
+  <script>
+    // BGM on/off 토글
+    const bgmBtn = document.getElementById('bgmBtn');
+    const bgm = document.getElementById('bgm');
+    let playing = false;
+
+    bgmBtn.addEventListener('click', () => {
+      if (!playing) {
+        bgm.play();
+        bgmBtn.src = 'Group 2085666377.png';
+        playing = true;
+      } else {
+        bgm.pause();
+        bgmBtn.src = 'Group 2085666376.png';
+        playing = false;
+      }
+    });
+
+    // 게임 시작 버튼 클릭 시 페이지 이동
+    document.getElementById('startBtn').addEventListener('click', () => {
+      window.location.href = 'game.html';
+    });
+  </script>
+</body>
+</html>
